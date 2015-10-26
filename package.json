@@ -1,10 +1,15 @@
 {
   "name": "infrastructure-mysql",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "author": {
     "name": "Stefan Stefanov",
     "email": "s.h.stefanov@mail.bg"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shstefanov/infrastructure-mysql.git"
   },
   "dependencies": {
     "infrastructure": "git+https://github.com/shstefanov/infrastructure.git#dev",

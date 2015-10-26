@@ -1,4 +1,3 @@
-
 module.exports = function(cb){
 
   var env          = this;
@@ -7,7 +6,6 @@ module.exports = function(cb){
   if(!config.mysql) return cb();
 
   var _          = require("underscore");
-  // var fs         = require("fs");
   var mysql      = require('mysql');
   var connection = mysql.createConnection(config.mysql);
 
@@ -31,14 +29,11 @@ module.exports = function(cb){
     return query;
   };
 
-  // require.extensions['.sql'] = function(module, filename){
-  //   module.exports = fs.readFileSync(filename, 'utf8').toString();
-  // };
-
   connection.connect(function(err){
     if(err) return cb(err);
     env.engines.mysql = connection;
     env.i.do("log.sys", "mysql", "Connected to MySQL on "+(config.mysql.host || "localhost")+":"+(config.mysql.port||3306)+"/"+config.mysql.database );
+    env.stops.push(function(cb){ connection.destroy(); cb(); })
     cb();
   });
 
